@@ -1,31 +1,50 @@
 <!DOCTYPE html>
 <html lang="pl">
+<?php
+if (session_status() === PHP_SESSION_NONE)
+    session_start();
+?>
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= (isset($title) ? $title : "QUIZ-WANIE") ?></title>
-    <link rel="shortcut icon" href="/assets/Icons/mainIco.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body style="height: 100vh;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 5vh;">
         <a href="/MainMenu" class="navbar-brand" style="color:white;">HOME</a>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                <!--Dla nauczyciela-->
+                <?php
+                if ($_SESSION['loginType'] == 1)
+                    echo '
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">Dodaj pytanie</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Utwórz test</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sprawdź wyniki</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Zarządzaj kontem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Zarządzaj uczniami</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Zarządzaj klasami</a>
+                </li>';
+                ?>
             </ul>
             <ul class="navbar-nav ">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Kontakt</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Wyloguj się</a>
+                    <a class="nav-link" href="/Logout">Wyloguj się</a>
                 </li>
             </ul>
         </div>

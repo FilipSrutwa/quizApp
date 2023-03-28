@@ -2,14 +2,39 @@
 
 namespace App\Controllers;
 
+use App\Models\LoginModel;
+
+use function PHPUnit\Framework\isEmpty;
+
 class Login extends BaseController
 {
     public function getIndex()
     {
         return view('login');
     }
+    public function getWrongCredentials()
+    {
+        return view('wrongCredentials');
+    }
     public function postIndex()
     {
-        return redirect()->to(site_url() . '/MainMenu');
+        $user = $this->checkLogin($_POST['login'], $_POST['password']);
+        if (empty($user))
+            return $this->getWrongCredentials();
+        else {
+            session_start();
+            $_SESSION['loginType'] = $user->Acc_type; //1 - nauczyciel 2 - student
+            $_SESSION['accID'] = $user->ID;
+
+            return redirect()->to('/MainMenu');
+        }
+    }
+    private function checkLogin($login, $password)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->query("SELECT ID,`Login`,`Password`,`Acc_type` FROM Accounts WHERE Login = '$login' AND Password = '$password'");
+        $result = $query->getRow();
+
+        return $result;
     }
 }
