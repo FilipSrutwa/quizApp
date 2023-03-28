@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class LoginModel extends Model
+class AccountModel extends Model
 {
     protected $table      = 'accounts';
     protected $primaryKey = 'ID';
@@ -14,7 +14,7 @@ class LoginModel extends Model
     protected $returnType     = 'array';
     //protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['Login', 'Password', 'Acc_type', 'Name', 'Surname'];
+    protected $allowedFields = ['ID', 'Login', 'Password', 'Acc_type', 'Name', 'Surname'];
 
     //protected $useTimestamps = false;
     //protected $createdField  = 'created_at';

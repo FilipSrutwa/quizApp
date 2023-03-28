@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\LoginModel;
-
 use function PHPUnit\Framework\isEmpty;
 
 class Login extends BaseController

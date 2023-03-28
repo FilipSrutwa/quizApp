@@ -17,7 +17,7 @@
                     <h2 class="text-center text-dark mt-2">Zaloguj się</h2>
                     <form class="card-body cardbody-color p-lg-5" action="Login" method="POST">
                         <div class="text-center">
-                            <img src="/assets/login_img.jfif" class="img-fluid profile-image-pic img-thumbnail my-1" width="200px" alt="profile">
+                            <img src="/assets/pictures/login_img.jfif" class="img-fluid profile-image-pic img-thumbnail my-1" width="200px" alt="profile">
                         </div>
                         <div class="mb-3">
                             <input type="text" class="form-control" id="Username" aria-describedby="emailHelp" placeholder="User Name" name="login">

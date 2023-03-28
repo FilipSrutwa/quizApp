@@ -32,7 +32,7 @@ if (session_status() === PHP_SESSION_NONE)
                     <a class="nav-link" href="#">Sprawdź wyniki</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Zarządzaj kontem</a>
+                    <a class="nav-link" href="/ManageAccount">Zarządzaj kontem</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Zarządzaj uczniami</a>

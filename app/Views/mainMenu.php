@@ -4,6 +4,8 @@
 <div class="container-fluid">
     <!--Dla nauczyciela-->
     <?php
+    if (session_status() === PHP_SESSION_NONE)
+        session_start();
     if ($_SESSION['loginType'] == 1)
         echo '
     <h1 style="text-align:center;">Zapraszamy do korzystania z górnego paska w celu poruszania się po aplikacji</h1>';
