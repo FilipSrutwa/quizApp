@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class AccountModel extends Model
+class ClassModel extends Model
 {
-    protected $table      = 'accounts';
+    protected $table      = 'classes';
     protected $primaryKey = 'ID';
 
     protected $useAutoIncrement = true;
@@ -14,7 +14,7 @@ class AccountModel extends Model
     protected $returnType     = 'array';
     //protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['ID', 'Login', 'Password', 'Acc_type', 'Name', 'Surname', 'Class'];
+    protected $allowedFields = ['ID', 'Name'];
 
     //protected $useTimestamps = false;
     //protected $createdField  = 'created_at';
