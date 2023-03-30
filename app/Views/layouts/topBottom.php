@@ -23,7 +23,7 @@ if (session_status() === PHP_SESSION_NONE)
                 if ($_SESSION['loginType'] == 1)
                     echo '
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Dodaj pytanie</a>
+                    <a class="nav-link" href="/ManageQuestions">Zarządzaj pytaniami</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Utwórz test</a>
