@@ -8,7 +8,7 @@
 </script>
 <div class="container-fluid">
     <div class="d-flex justify-content-center m-5">
-        <a href="/ManageStudents/addStudent" class="btn btn-lg btn-primary">Dodaj pytanie</a>
+        <a href="/ManageQuestions/addQuestion" class="btn btn-lg btn-primary">Dodaj pytanie</a>
     </div>
 
     <table class="table table-hover">
