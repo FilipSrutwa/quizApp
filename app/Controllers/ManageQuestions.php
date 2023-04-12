@@ -30,6 +30,7 @@ class ManageQuestions extends BaseController
         $data = [
             'foundQuestion' => $this->grabQuestion($questionID),
             'foundAnswers' => $this->grabAnswersToQuestion($questionID),
+            'foundCategories' => $this->grabCategories(),
         ];
         return view('editQuestion', $data);
     }
@@ -41,6 +42,40 @@ class ManageQuestions extends BaseController
         ];
         return view('addQuestion', $data);
     }
+
+    public function postEditQuestion($questionID)
+    {
+
+        $questionData = [
+            'Category' => $_POST['category'],
+            'Name' => $_POST['name'],
+        ];
+        $question = new QuestionModel();
+        $question->update($questionID, $questionData);
+
+        $correctAnswerData = [
+            'Question' => $_POST['questionID'],
+            'Answer' => $_POST['answer1'],
+            'isTrue' => 1,
+        ];
+        $answer = new AnswerModel();
+        $answer->where('Question', $_POST['questionID'])->delete();
+        $answer->insert($correctAnswerData);
+
+        $answerNamesInForm = array('answer2', 'answer3', 'answer4');
+        for ($i = 0; $i < 3; $i++) {
+            $answerData = [
+                'Question' => $questionID,
+                'Answer' => $_POST[$answerNamesInForm[$i]],
+                'isTrue' => 0,
+            ];
+            $incorrectAnswer = new AnswerModel();
+            $incorrectAnswer->insert($answerData);
+        }
+
+        return redirect()->to(site_url() . '/ManageQuestions');
+    }
+
     public function postAddQuestion()
     {
         $questionData = [

@@ -3,30 +3,47 @@
 
 <div class="container d-flex justify-content-center mt-5">
     <form method="POST">
-        <div class="form-group">
-            <label for="category">Kategoria</label>
-            <input type="text" class="form-control" id="category" name="category" value="<?= $foundQuestion['Name'] ?>">
-        </div>
+        <label for="category">Kategoria</label><br>
+        <select class="form-select" name="category" id="category">
+            <?php
+            foreach ($foundCategories as $category) {
+                if ($category['ID'] == $foundQuestion['Category']) {
+                    echo '
+                    <option value=' . $category['ID'] . ' selected>' . $category['Name'] . '</option>
+                    ';
+                } else {
+                    echo '
+                    <option value=' . $category['ID'] . '>' . $category['Name'] . '</option>
+                    ';
+                }
+            }
+            ?>
+        </select>
         <div class="form-group">
             <label for="name">Treść pytania</label>
-            <input type="password" class="form-control" id="name" name="name" value="">
+            <input type="text" class="form-control" id="name" name="name" value="<?= $foundQuestion['Name'] ?>">
         </div>
-        <div class="form-group">
-            <label for="correctAnswer">Odpowiedź nr 1 (poprawna)</label>
-            <input type="text" class="form-control bg-success" id="correctAnswer" name="correctAnswer" value="">
-        </div>
-        <div class="form-group">
-            <label for="secondAnswer">Odpowiedź nr 2</label>
-            <input type="text" class="form-control" id="secondAnswer" name="secondAnswer" value="">
-        </div>
-        <div class="form-group">
-            <label for="thirdAnswer">Odpowiedź nr 3</label>
-            <input type="text" class="form-control" id="thirdAnswer" name="thirdAnswer" value="">
-        </div>
-        <div class="form-group">
-            <label for="fourthAnswer">Odpowiedź nr 4</label>
-            <input type="text" class="form-control" id="fourthAnswer" name="fourthAnswer" value="">
-        </div>
+        <?php
+        $i = 1;
+        foreach ($foundAnswers as $answer) {
+            if ($answer['IsTrue'] == 1) {
+                echo '
+                <div class="form-group">
+                    <label for="answer' . $i . '">Odpowiedź nr ' . $i . ' (poprawna)</label>
+                    <input type="text" class="form-control bg-success" id="answer' . $i . '" name="answer' . $i . '" value="' . $answer['Answer'] . '">
+                </div>
+                ';
+            } else {
+                echo '
+                <div class="form-group">
+                    <label for="answer' . $i . '">Odpowiedź nr ' . $i . '</label>
+                    <input type="text" class="form-control" id="answer' . $i . '" name="answer' . $i . '" value="' . $answer['Answer'] . '">
+                </div>
+            ';
+            }
+            $i++;
+        }
+        ?>
         <input type="hidden" name="questionID" value="<?= $foundQuestion['ID'] ?>">
         <button type="submit" class="btn btn-success">Zatwierdź zmiany</button>
         <a href="/ManageQuestions/Question/<?= $foundQuestion['ID'] ?>" class="btn btn-warning">Porzuć zmiany</a>
