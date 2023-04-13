@@ -38,7 +38,7 @@ if (session_status() === PHP_SESSION_NONE)
                     <a class="nav-link" href="/ManageStudents">Zarządzaj uczniami</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Zarządzaj klasami</a>
+                    <a class="nav-link" href="/ManageClasses">Zarządzaj klasami</a>
                 </li>';
                 ?>
             </ul>
