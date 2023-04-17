@@ -23,14 +23,14 @@ class Login extends BaseController
             session_start();
             $_SESSION['loginType'] = $user->Acc_type; //1 - nauczyciel 2 - student
             $_SESSION['accID'] = $user->ID;
-
+            $_SESSION['class'] = $user->Class;
             return redirect()->to('/MainMenu');
         }
     }
     private function checkLogin($login, $password)
     {
         $db = \Config\Database::connect();
-        $query = $db->query("SELECT ID,`Login`,`Password`,`Acc_type` FROM Accounts WHERE Login = '$login' AND Password = '$password'");
+        $query = $db->query("SELECT ID,`Login`,`Password`,`Acc_type`,Class FROM Accounts WHERE Login = '$login' AND Password = '$password'");
         $result = $query->getRow();
 
         return $result;

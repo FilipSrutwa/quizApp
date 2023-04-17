@@ -32,12 +32,22 @@ if (session_status() === PHP_SESSION_NONE)
                     <a class="nav-link" href="/ManageAccount">Zarządzaj kontem</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/StudentsResults">Zobacz wyniki</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/ManageStudents">Zarządzaj uczniami</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/ManageClasses">Zarządzaj klasami</a>
                 </li>';
+                else {
+                    echo '
+                <li class="nav-item">
+                    <a class="nav-link" href="/MyResults">Moje wyniki</a>
+                </li>';
+                }
                 ?>
+
             </ul>
             <ul class="navbar-nav ">
                 <li class="nav-item">

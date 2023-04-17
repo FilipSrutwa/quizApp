@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TestModel extends Model
+class TestResults extends Model
 {
-    protected $table      = 'tests';
+    protected $table      = 'tests_results';
     protected $primaryKey = 'ID';
 
     protected $useAutoIncrement = true;
@@ -14,12 +14,12 @@ class TestModel extends Model
     protected $returnType     = 'array';
     //protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['ID', 'Name', 'Class', 'Category', 'Deleted_at', 'Created_at'];
+    protected $allowedFields = ['ID', 'Test_ID', 'Acc_ID', 'Points', 'Max_points'];
 
-    protected $useTimestamps = true;
-    protected $createdField  = 'Created_at';
-    protected $updatedField  = 'Updated_at';
-    protected $deletedField  = 'Deleted_at';
+    protected $useTimestamps = false;
+    //protected $createdField  = 'Created_at';
+    //protected $updatedField  = 'Updated_at';
+    //protected $deletedField  = 'Deleted_at';
 
     //protected $validationRules    = [];
     //protected $validationMessages = [];
